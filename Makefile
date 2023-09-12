@@ -1,15 +1,30 @@
+## This is your prebaked makefile!
+## use the other one for actual running of code
+
 greeting:
-	echo 'Hello world'
+	echo 'hello'
+
+math:
+	expr 2 + 2
 
 directories:
 	-mkdir tmp
 	-mkdir data
+
 downloads:
 	curl "https://www.imf.org/external/datamapper/api/v1/PCPIPCH?periods=2023" -o tmp/inflation.json
 	curl "https://www.imf.org/external/datamapper/api/v1/countries" -o tmp/countries.json
+
 freshdata:
 	node imf_to_csv.js
+
 all: directories downloads freshdata
+
+clean:
+	-rm -rf ./data
+	-rm -rf ./tmp
+
+
 droughtmap:
 	# get and unzip the drought map
 	curl "https://droughtmonitor.unl.edu/data/shapefiles_m/USDM_current_M.zip" -o tmp/USDM_current_M.zip
@@ -45,4 +60,3 @@ filecheck:
 		--insecure \
 		--data '{"text":"The file you asked me to watch has changed!"}' $$SLACK_WEBHOOK
 
- 
