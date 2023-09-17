@@ -18,7 +18,8 @@ downloads:
 freshdata:
 	node imf_to_csv.js
 
-all: directories downloads freshdata
+all: 
+	directories downloads freshdata
 
 clean:
 	-rm -rf ./data
