@@ -18,8 +18,7 @@ downloads:
 freshdata:
 	node imf_to_csv.js
 
-all: 
-	directories downloads freshdata
+all: directories downloads freshdata
 
 clean:
 	-rm -rf ./data
@@ -60,4 +59,3 @@ filecheck:
 		curl -X POST -H 'Content-type: application/json' \
 		--insecure \
 		--data '{"text":"The file you asked me to watch has changed!"}' $$SLACK_WEBHOOK
-
