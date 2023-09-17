@@ -4,13 +4,14 @@ greeting:
 directories:
 	-mkdir tmp
 	-mkdir data
+all: 
+	directories downloads freshdata
 downloads:
 	curl "https://www.imf.org/external/datamapper/api/v1/PCPIPCH?periods=2023" -o tmp/inflation.json
 	curl "https://www.imf.org/external/datamapper/api/v1/countries" -o tmp/countries.json
 freshdata:
 	node imf_to_csv.js
-all: 
-	directories downloads freshdata
+
 droughtmap:
 	# get and unzip the drought map
 	curl "https://droughtmonitor.unl.edu/data/shapefiles_m/USDM_current_M.zip" -o tmp/USDM_current_M.zip
