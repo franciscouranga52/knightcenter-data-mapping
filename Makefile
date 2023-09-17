@@ -8,8 +8,8 @@ math:
 	expr 2 + 2
 
 directories:
-	-mkdir tmp
-	-mkdir data
+	-mkdir -p tmp
+	-mkdir -p data
 
 downloads:
 	curl "https://www.imf.org/external/datamapper/api/v1/PCPIPCH?periods=2023" -o tmp/inflation.json
